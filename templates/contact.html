@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block page_title %} Contact Info {% endblock %}
+{% block page_content %}
+ <div class="container">
+ <h1>Tell Me About You!</h1>
+ {% if form_submitted %}
+     <div class="col-12">
+        <h2> Thank you for completing this form!</h2>
+     </div>
+     <div class="col-md-6">
+         <p>First Name: </p>
+     </div>
+     <div class="col-md-6" >
+     <p>{{ request.form.get("first_name") }} </p>
+     </div>
+      <div class="col-md-6">
+         <p>Last Name: </p>
+     </div>
+     <div class="col-md-6" >
+     <p>{{ request.form.get("last_name") }} </p>
+     </div>
+      <div class="col-md-6">
+         <p>Email: </p>
+     </div>
+     <div class="col-md-6" >
+     <p>{{ request.form.get("email") }} </p>
+     </div>
+      <div class="col-md-6">
+         <p>Favorite Color: </p>
+     </div>
+     <div class="col-md-6" >
+     <p>{{ request.form.get("favorite_color") }} </p>
+     </div>
+
+ {%  else %}
+     <form class="row g-3" action="{{ url_for('contact') }}" method="post">
+      <div class="col-md-6">
+        <label for="first_name">First Name: </label>
+        <input type="text" class="form-control" id="first_name" name="first_name" >
+      </div>
+      <div class="col-md-6">
+        <label for="last_name">Last Name: </label>
+        <input type="text" class="form-control" id="last_name" name="last_name">
+      </div>
+        <div class="col-md-6">
+        <label for="email">Email: </label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
+        <div class="col-md-6">
+        <label for="favorite_color">Favorite Color: </label>
+        <input type="text" class="form-control" id="favorite_color" name="favorite_color">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+     {% endif %}
+ </div>
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
